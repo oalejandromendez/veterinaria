@@ -30,7 +30,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>LESTOMA
+                        <h3>Clinica Veterinaria
                         </h3>
                     </div>
                 </div>
