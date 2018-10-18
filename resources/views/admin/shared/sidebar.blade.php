@@ -18,6 +18,9 @@
                     <li><a href="{{ route('admin.home')}}"><i class="fas fa-home"></i> Home
                         </a>
                     </li>
+                    <li><a href="{{ route('admin.usuarios.index')}}"><i class="fas fa-user-tie"></i> Usuarios
+                        </a>
+                    </li>
                 </ul>
             </div>
 

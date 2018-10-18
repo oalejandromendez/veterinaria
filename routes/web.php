@@ -29,3 +29,16 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/home', 'HomeController@index')->name('admin.home');
+
+Route::middleware(['auth'])->group(function () {
+    //Usuarios
+    Route::resource('admin/usuarios', 'UserController', ['as' => 'admin'])->except([
+        'show'
+    ]);
+    Route::get('admin/usuarios/data', array('as' => 'admin.usuarios.data', 'uses' => 'UserController@data'));
+    Route::get('admin/usuario/perfil', array('as' => 'admin.usuario.perfil', 'uses' => 'UserController@perfil'));
+    Route::post('admin/usuario/perfil', array(
+        'as' => 'admin.usuario.modificar_perfil',
+        'uses' => 'UserController@modificarPerfil'
+    ));
+});
