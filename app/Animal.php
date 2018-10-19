@@ -26,4 +26,9 @@ class Animal extends Model
      * @var array
      */
     protected $guarded = ['pk_id_animales', 'created_at', 'updated_at'];
+
+    public function responsable()
+    {
+        return $this->belongsTo(Responsable::class, 'fk_id_propietario', 'pk_id_responsables');
+    }
 }

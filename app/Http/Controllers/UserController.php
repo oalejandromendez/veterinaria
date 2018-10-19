@@ -88,6 +88,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->get('name');
         $user->lastname = $request->get('lastname');
+        $user->cedula = $request->get('cedula');
         $user->age = $request->get('age');
         $user->address = $request->get('address');
         $user->phone = $request->get('phone');

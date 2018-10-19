@@ -41,4 +41,11 @@ Route::middleware(['auth'])->group(function () {
         'as' => 'admin.usuario.modificar_perfil',
         'uses' => 'UserController@modificarPerfil'
     ));
+    //Gestionar Tipo de respuesta
+    Route::resource('animales', 'AnimalController', ['as' => 'admin']);
+    Route::get('animales/data/data', array('as' => 'admin.animales.data', 'uses' => 'AnimalController@data'));
+
+    //Gestionar Tipo de respuesta
+    Route::resource('responsables', 'ResponsableController', ['as' => 'admin']);
+    Route::get('responsables/data/data', array('as' => 'admin.responsables.data', 'uses' => 'ResponsableController@data'));
 });

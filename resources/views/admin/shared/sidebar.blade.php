@@ -21,6 +21,12 @@
                     <li><a href="{{ route('admin.usuarios.index')}}"><i class="fas fa-user-tie"></i> Usuarios
                         </a>
                     </li>
+                    <li><a href="{{ route('admin.responsables.index')}}"><i class="fas fa-user-tie"></i> Responsables
+                        </a>
+                    </li>
+                    <li><a href="{{ route('admin.animales.index')}}"><i class="fas fa-linux"></i> Animales
+                        </a>
+                    </li>
                 </ul>
             </div>
 

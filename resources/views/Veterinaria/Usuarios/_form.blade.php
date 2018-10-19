@@ -16,6 +16,14 @@
     </div>
 </div>
 <div class="item form-group">
+    {!! Form::label('cedula','Cedula', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        {!! Form::text('cedula', old('cedula'),[ 'class' => 'form-control col-md-6 col-sm-6 col-xs-12', 'required' => 'required', 'data-parsley-pattern'
+        => '^[0-9]*$', 'data-parsley-pattern-message' => 'Por favor escriba solo numeros', 'data-parsley-length' => "[1,
+        50]", 'data-parsley-trigger'=>"change"] ) !!}
+    </div>
+</div>
+<div class="item form-group">
     {!! Form::label('age','Edad', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
     <div class="col-md-6 col-sm-6 col-xs-12">
         {!! Form::text('age', old('age'),[ 'class' => 'form-control col-md-6 col-sm-6 col-xs-12', 'required' => 'required', 'data-parsley-pattern'
@@ -42,8 +50,7 @@
 <div class="item form-group">
     {!! Form::label('email','Email', [ 'class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
     <div class="col-md-6 col-sm-6 col-xs-12">
-        {!! Form::email('email', old('email'),[ 'class' => 'form-control col-md-6 col-sm-6 col-xs-12', 'data-parsley-pattern' =>
-        '/@(ucundinamarca.edu.co)/g', 'data-parsley-pattern-message' => 'El correo debe ser institucional', 'required' =>
+        {!! Form::email('email', old('email'),[ 'class' => 'form-control col-md-6 col-sm-6 col-xs-12','data-parsley-pattern-message' => 'El correo debe ser institucional', 'required' =>
         'required' ] ) !!}
     </div>
 </div>
