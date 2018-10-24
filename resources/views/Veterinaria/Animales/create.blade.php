@@ -59,10 +59,12 @@
     <script src="{{asset('gentella/vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 
 @endpush
-
 {{-- Funciones necesarias por el formulario --}}
 @push('functions')
     <script type="text/javascript">
+        $('#sexo').select2();
+        $('#responsable').select2();
+        fecha('#fecha_inicio');
         var form = $('#form_crear_animales');
         $(form).parsley({
             trigger: 'change',
@@ -84,6 +86,10 @@
                 success: function (response, NULL, jqXHR) {
                     $(form)[0].reset();
                     $(form).parsley().reset();
+                    $("#sexo").select2('data', {}); // clear out values selected 
+                    $("#sexo").select2({allowClear: true});
+                    $("#responsable").select2('data', {}); // clear out values selected 
+                    $("#responsable").select2({allowClear: true});
                     new PNotify({
                         title: response.title,
                         text: response.msg,

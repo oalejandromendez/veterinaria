@@ -34,5 +34,11 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['name' => 'MODIFICAR_RESPONSABLES']);
         Permission::create(['name' => 'ELIMINAR_RESPONSABLES']);
 
+        Permission::create(['name' => 'ACCEDER_EPICRISIS']);
+        Permission::create(['name' => 'VER_EPICRISIS']);
+        Permission::create(['name' => 'CREAR_EPICRISIS']);
+        Permission::create(['name' => 'MODIFICAR_EPICRISIS']);
+        Permission::create(['name' => 'ELIMINAR_EPICRISIS']);
+
     }
 }

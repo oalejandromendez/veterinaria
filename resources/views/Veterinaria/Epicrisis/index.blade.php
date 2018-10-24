@@ -1,25 +1,25 @@
 {{-- Titulo de la pagina --}}
-@section('title', 'Animales')
+@section('title', 'Epicrisis')
 
 {{-- Contenido principal --}}
 @extends('admin.layouts.app')
 
 @section('content')
     @component('admin.components.panel')
-        @slot('title', 'Animales')
-        @can('CREAR_ANIMALES')
+        @slot('title', 'Epicrisis')
+        @can('CREAR_EPICRISIS')
             <div class="col-md-12">
                 <div class="actions">
-                    <a href="{{ route('admin.animales.create') }}" class="btn btn-info">
-                        <i class="fa fa-plus"></i> Agregar Animales</a></div>
+                    <a href="{{ route('admin.epicrisis.create') }}" class="btn btn-info">
+                        <i class="fa fa-plus"></i> Abrir Epicrisis</a></div>
             </div>
             <br>
             <br>
             <br>
         @endcan
-        @can('VER_ANIMALES')
+        @can('VER_EPICRISIS')
             <div class="col-md-12">
-                @component('admin.components.datatable', ['id' => 'animales-table-ajax']) @slot('columns', [ 'id', 'Nombre', 'Raza','Color','Sexo','Fecha de Nacimiento','Señales Particulares','Propietario',
+                @component('admin.components.datatable', ['id' => 'epicrisis-table-ajax']) @slot('columns', [ 'id','Animal','Responsable', 'Diagnostico','Estado',
     'Acciones' => ['style' => 'width:85px;'] ]) @endcomponent
 
             </div>
@@ -65,28 +65,24 @@
                     styling: 'bootstrap3'
                 });
             }
-            table = $('#animales-table-ajax').DataTable({
+            table = $('#epicrisis-table-ajax').DataTable({
                 processing: true,
                 serverSide: false,
                 stateSave: true,
                 keys: true,
                 dom: 'Bfrtip',
                 buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-                "ajax": "{{ route('admin.animales.data') }}",
+                "ajax": "{{ route('admin.epicrisis.data') }}",
                 "columns": [
-                    {data: 'pk_id_animales', name: 'id', "visible": false},
-                    {data: 'nombre', name: 'Nombre', className: "desktop"},
-                    {data: 'raza', name: 'Raza', className: "desktop"},
-                    {data: 'color', name: 'Color', className: "min-phone-l"},
-                    {data: 'sexo', name: 'Sexo', className: "min-tablet-l"},
-                    {data: 'fecha_nacimiento', name: 'Fecha de Nacimiento', className: "min-tablet-l"},
-                    {data: 'seniales_particulares', name: 'Señales Particulares', className: "min-tablet-l"},
-                    {data: 'propietario', name: 'Propietario', className: "min-tablet-l"},
-
+                    {data: 'pk_id_epicrisis', name: 'id', "visible": false},
+                    {data: 'animal', name: 'Animal', className: "min-phone-l"},
+                    {data: 'responsable', name: 'Responsable', className: "desktop"},
+                    {data: 'diagnostico', name: 'Diagnostico', className: "desktop"},
+                    {data: 'estado.estado', name: 'Estado', className: "min-tablet-l"},
                     {
                         defaultContent:
-                            '@can('ELIMINAR_ANIMALES')<a href="javascript:;" class="btn btn-simple btn-danger btn-sm remove" data-toggle="confirmation"><i class="fa fa-trash"></i></a>@endcan' +
-                            '@can('MODIFICAR_ANIMALES')<a href="javascript:;" class="btn btn-simple btn-info btn-sm edit" data-toggle="confirmation"><i class="fas fa-edit"></i></a>@endcan',
+                            '@can('ELIMINAR_EPICRISIS')<a href="javascript:;" class="btn btn-simple btn-danger btn-sm remove" data-toggle="confirmation"><i class="fa fa-trash"></i></a>@endcan' +
+                            '@can('MODIFICAR_EPICRISIS')<a href="javascript:;" class="btn btn-simple btn-info btn-sm edit" data-toggle="confirmation"><i class="fas fa-edit"></i></a>@endcan',
                         data: 'action',
                         name: 'action',
                         title: 'Acciones',
@@ -124,7 +120,7 @@
                     }
                 },
                 initComplete: function () {
-                    this.api().columns([1, 2, 3, 4]).every(function () {
+                    this.api().columns([2, 3, 5]).every(function () {
                         var column = this;
                         var select = $('<select style="width: 100px;"><option value=""></option></select>')
                             .appendTo($(column.footer()).empty())
@@ -146,17 +142,17 @@
                 e.preventDefault();
                 $tr = $(this).closest('tr');
                 var dataTable = table.row($tr).data();
-                var route = '{{ url('animales/') }}' + '/' + dataTable.pk_id_animales;
+                var route = '{{ url('responsables/') }}' + '/' + dataTable.pk_id_responsables;
                 var type = 'DELETE';
                 dataType: "JSON",
-                    SwalDelete(dataTable.pk_id_animales, route);
+                    SwalDelete(dataTable.pk_id_responsables, route);
 
             });
             table.on('click', '.edit', function (e) {
                 e.preventDefault();
                 $tr = $(this).closest('tr');
                 var dataTable = table.row($tr).data();
-                var route = '{{ url('animales/') }}' + '/' + dataTable.pk_id_animales + '/edit';
+                var route = '{{ url('responsables/') }}' + '/' + dataTable.pk_id_responsables + '/edit';
                 window.location.href = route;
 
 

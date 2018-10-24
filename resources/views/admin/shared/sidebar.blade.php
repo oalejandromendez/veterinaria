@@ -21,10 +21,13 @@
                     <li><a href="{{ route('admin.usuarios.index')}}"><i class="fas fa-user-tie"></i> Usuarios
                         </a>
                     </li>
-                    <li><a href="{{ route('admin.responsables.index')}}"><i class="fas fa-user-tie"></i> Responsables
+                    <li><a href="{{ route('admin.responsables.index')}}"><i class="fas fa-address-card"></i> Responsables
                         </a>
                     </li>
-                    <li><a href="{{ route('admin.animales.index')}}"><i class="fas fa-linux"></i> Animales
+                    <li><a href="{{ route('admin.animales.index')}}"><i class="fas fa-crow"></i> Animales
+                        </a>
+                    </li>
+                    <li><a href="{{ route('admin.epicrisis.index')}}"><i class="far fa-clipboard"></i> Epicrisis
                         </a>
                     </li>
                 </ul>

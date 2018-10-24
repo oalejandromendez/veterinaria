@@ -26,6 +26,12 @@ class Animal extends Model
      * @var array
      */
     protected $guarded = ['pk_id_animales', 'created_at', 'updated_at'];
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['fecha_nacimiento'];
 
     public function responsable()
     {

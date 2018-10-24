@@ -48,4 +48,8 @@ Route::middleware(['auth'])->group(function () {
     //Gestionar Tipo de respuesta
     Route::resource('responsables', 'ResponsableController', ['as' => 'admin']);
     Route::get('responsables/data/data', array('as' => 'admin.responsables.data', 'uses' => 'ResponsableController@data'));
+
+    //Gestionar Tipo de respuesta
+    Route::resource('epicrisis', 'EpicrisisController', ['as' => 'admin']);
+    Route::get('epicrisis/data/data', array('as' => 'admin.epicrisis.data', 'uses' => 'EpicrisisController@data'));
 });
