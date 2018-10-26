@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123456')
         ]);
         $user2->assignRole('VETERINARIO');
-        $user2 = User::create([
+        $user3 = User::create([
             'name' => 'Liz',
             'lastname' => 'Quintero',
             'cedula' => '1073111111',
@@ -46,7 +46,7 @@ class UsersTableSeeder extends Seeder
             'phone' => '88888888',
             'password' => bcrypt('123456')
         ]);
-        $user2->assignRole('RECEPCIONISTA');
+        $user3->assignRole('VETERINARIO');
 
     }
 }

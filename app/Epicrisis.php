@@ -26,7 +26,12 @@ class Epicrisis extends Model
      * @var array
      */
     protected $guarded = ['pk_id_epicrisis', 'created_at', 'updated_at'];
-
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['fecha_de_admision'];
     public function animal()
     {
         return $this->belongsTo(Animal::class, 'fk_id_animal', 'pk_id_animales');
@@ -37,7 +42,7 @@ class Epicrisis extends Model
     }
     public function estado()
     {
-        return $this->belongsTo(Responsable::class, 'fk_id_estado', 'pk_id_estado');
+        return $this->belongsTo(Estado::class, 'fk_id_estado', 'pk_id_estado');
     }
     public function usuario()
     {

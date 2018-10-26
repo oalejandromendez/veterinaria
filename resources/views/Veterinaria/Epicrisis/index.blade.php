@@ -19,7 +19,7 @@
         @endcan
         @can('VER_EPICRISIS')
             <div class="col-md-12">
-                @component('admin.components.datatable', ['id' => 'epicrisis-table-ajax']) @slot('columns', [ 'id','Animal','Responsable', 'Diagnostico','Estado',
+                @component('admin.components.datatable', ['id' => 'epicrisis-table-ajax']) @slot('columns', [ 'id','Animal','Responsable','Medico Tratante','Diagnostico','Estado',
     'Acciones' => ['style' => 'width:85px;'] ]) @endcomponent
 
             </div>
@@ -75,8 +75,9 @@
                 "ajax": "{{ route('admin.epicrisis.data') }}",
                 "columns": [
                     {data: 'pk_id_epicrisis', name: 'id', "visible": false},
-                    {data: 'animal', name: 'Animal', className: "min-phone-l"},
-                    {data: 'responsable', name: 'Responsable', className: "desktop"},
+                    {data: 'animal.nombre', name: 'Animal', className: "min-phone-l"},
+                    {data: 'Responsable', name: 'Responsable', className: "desktop"},
+                    {data: 'Medico', name: 'Medico Tratante', className: "desktop"},
                     {data: 'diagnostico', name: 'Diagnostico', className: "desktop"},
                     {data: 'estado.estado', name: 'Estado', className: "min-tablet-l"},
                     {
@@ -120,7 +121,7 @@
                     }
                 },
                 initComplete: function () {
-                    this.api().columns([2, 3, 5]).every(function () {
+                    this.api().columns([2,3,5]).every(function () {
                         var column = this;
                         var select = $('<select style="width: 100px;"><option value=""></option></select>')
                             .appendTo($(column.footer()).empty())
@@ -142,17 +143,17 @@
                 e.preventDefault();
                 $tr = $(this).closest('tr');
                 var dataTable = table.row($tr).data();
-                var route = '{{ url('responsables/') }}' + '/' + dataTable.pk_id_responsables;
+                var route = '{{ url('epicrisis/') }}' + '/' + dataTable.pk_id_epicrisis;
                 var type = 'DELETE';
                 dataType: "JSON",
-                    SwalDelete(dataTable.pk_id_responsables, route);
+                    SwalDelete(dataTable.pk_id_epicrisis, route);
 
             });
             table.on('click', '.edit', function (e) {
                 e.preventDefault();
                 $tr = $(this).closest('tr');
                 var dataTable = table.row($tr).data();
-                var route = '{{ url('responsables/') }}' + '/' + dataTable.pk_id_responsables + '/edit';
+                var route = '{{ url('epicrisis/') }}' + '/' + dataTable.pk_id_epicrisis + '/edit';
                 window.location.href = route;
 
 

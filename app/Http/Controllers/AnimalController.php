@@ -92,7 +92,8 @@ class AnimalController extends Controller
      */
     public function show($id)
     {
-        //
+        $animales = Animal::where('fk_id_propietario', $id)->get()->pluck('nombre', 'pk_id_animales');
+        return json_encode($animales);
     }
 
     /**
