@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.in');
@@ -52,4 +52,56 @@ Route::middleware(['auth'])->group(function () {
     //Gestionar Tipo de respuesta
     Route::resource('epicrisis', 'EpicrisisController', ['as' => 'admin']);
     Route::get('epicrisis/data/data', array('as' => 'admin.epicrisis.data', 'uses' => 'EpicrisisController@data'));
+
+    //Gestionar Tipo de respuesta
+    Route::resource('estados', 'EstadosController', ['as' => 'admin']);
+    Route::get('estados/data/data', array('as' => 'admin.estados.data', 'uses' => 'EstadosController@data'));
+
+    //Graficas
+    Route::get('admin/hospitalizacion', array(
+        'as' => 'admin.graficas.index',
+        'uses' => 'GraficasController@index'
+    ));
+
+    //informes de Encuestas
+    Route::get('informes', array(
+        'as' => 'admin.informes.index',
+        'uses' => 'ReportesController@index'
+    ));
+
+    Route::get('informes/datos', array(
+        'as' => 'admin.informes.datos',
+        'uses' => 'ReportesController@obtenerDatos'
+    ));
+
+    //filtros informes encuestas
+    Route::post('informes/filtrar', array(
+        'as' => 'admin.informes.filtrar',
+        'uses' => 'ReportesController@filtro'
+    ));
+
+
+
+    //informes de Encuestas
+    Route::get('informes_altas', array(
+        'as' => 'admin.informes_altas.index',
+        'uses' => 'ReportesAltasController@index'
+    ));
+
+    Route::get('informes_altas/datos', array(
+        'as' => 'admin.informes_altas.datos',
+        'uses' => 'ReportesAltasController@obtenerDatos'
+    ));
+
+    //filtros informes encuestas
+    Route::post('informes_altas/filtrar', array(
+        'as' => 'admin.informes_altas.filtrar',
+        'uses' => 'ReportesAltasController@filtro'
+    ));
+
+    //Reportes pdf documentos de autoevaluacion
+    Route::post('informes_decesos/descargar', array(
+        'as' => 'admin.informes_decesos.descargar',
+        'uses' => 'ReportesController@pdf_documento'
+    ));
 });

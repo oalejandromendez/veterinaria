@@ -7,6 +7,7 @@ use App\Epicrisis;
 use App\User;
 use App\Responsable;
 use App\Estado;
+use App\Estado_Epicrisis;
 use App\Animal;
 use DataTables;
 use Carbon\Carbon;
@@ -78,21 +79,17 @@ class EpicrisisController extends Controller
         $epicrisis->fk_id_medico_veterinario = $request->get('id');
         $epicrisis->fk_id_animal = $request->get('pk_id_animales');
         $epicrisis->fk_id_responsable = $request->get('pk_id_responsables');
-        $epicrisis->motivo_consulta = $request->get('motivo_consulta');
-        $epicrisis->vacunas = $request->get('vacunas');
-        $epicrisis->alergias = $request->get('alergias');
-        $epicrisis->enfermedades_anteriores = $request->get('enfermedades_anteriores');
-        $epicrisis->cirugias = $request->get('cirugias');
-        $epicrisis->pulso = $request->get('pulso');
-        $epicrisis->temperatura = $request->get('temperatura');
-        $epicrisis->peso = $request->get('peso');
-        $epicrisis->examenes_clinicos = $request->get('examenes_clinicos');
-        $epicrisis->diagnostico = $request->get('diagnostico');
+        $epicrisis->fill($request->only(['motivo_consulta', 'vacunas','alergias','enfermedades_anteriores','cirugias','pulso','temperatura','peso','examenes_clinicos','diagnostico']));
         $epicrisis->fk_id_estado = $request->get('pk_id_estado');
         $epicrisis->save();
-        return response([
-            'msg' => 'Epicrisis creada exitosamente.',
-            'title' => '¡Proceso exitoso!'
+
+        $estado_epicrisis = new Estado_Epicrisis();
+        $estado_epicrisis->fecha = Carbon::createFromFormat('d/m/Y', $request->get('fecha_de_admision'));
+        $estado_epicrisis->fk_id_epicrisis = $epicrisis->pk_id_epicrisis;
+        $estado_epicrisis->fk_id_estado = $request->get('pk_id_estado');
+        $estado_epicrisis->save();
+        return response(['msg' => 'Datos registrados correctamente.',
+            'title' => '¡Registro exitoso!'
         ], 200)// 200 Status Code: Standard response for successful HTTP request
         ->header('Content-Type', 'application/json');
     }
@@ -140,22 +137,22 @@ class EpicrisisController extends Controller
     public function update(Request $request, $id)
     {
         $epicrisis = Epicrisis::findOrFail($id);
+        if($epicrisis->fk_id_estado != $request->get('pk_id_estado'))
+        {
+            $estado_epicrisis = new Estado_Epicrisis();
+            $estado_epicrisis->fecha = Carbon::createFromFormat('d/m/Y', $request->get('fecha_de_admision'));
+            $estado_epicrisis->fk_id_epicrisis = $epicrisis->pk_id_epicrisis;
+            $estado_epicrisis->fk_id_estado = $request->get('pk_id_estado');
+            $estado_epicrisis->save();
+        }
         $epicrisis->fecha_de_admision = Carbon::createFromFormat('d/m/Y', $request->get('fecha_de_admision'));
         $epicrisis->fk_id_medico_veterinario = $request->get('id');
         $epicrisis->fk_id_animal = $request->get('pk_id_animales');
         $epicrisis->fk_id_responsable = $request->get('pk_id_responsables');
-        $epicrisis->motivo_consulta = $request->get('motivo_consulta');
-        $epicrisis->vacunas = $request->get('vacunas');
-        $epicrisis->alergias = $request->get('alergias');
-        $epicrisis->enfermedades_anteriores = $request->get('enfermedades_anteriores');
-        $epicrisis->cirugias = $request->get('cirugias');
-        $epicrisis->pulso = $request->get('pulso');
-        $epicrisis->temperatura = $request->get('temperatura');
-        $epicrisis->peso = $request->get('peso');
-        $epicrisis->examenes_clinicos = $request->get('examenes_clinicos');
-        $epicrisis->diagnostico = $request->get('diagnostico');
+        $epicrisis->fill($request->only(['motivo_consulta', 'vacunas','alergias','enfermedades_anteriores','cirugias','pulso','temperatura','peso','examenes_clinicos','diagnostico']));
         $epicrisis->fk_id_estado = $request->get('pk_id_estado');
         $epicrisis->update();
+
         return response([
             'msg' => 'Datos modificados exitosamente.',
             'title' => '¡Proceso exitoso!'

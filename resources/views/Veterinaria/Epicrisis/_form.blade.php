@@ -59,17 +59,16 @@
     </div>
 </div>
 
-<div class="form-group">
+<div class="item form-group">
     {!! Form::label('vacunas','Vacunas', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
     <div class="col-md-3 col-sm-3 col-xs-12">
-        {!! Form::textarea('vacunas', old('vacunas'),[ 'class' => 'form-control', 'required'
-        => 'required', 'data-parsley-type'=>'^[a-zA-Z\s]*$' , 
+        {!! Form::textarea('vacunas', old('vacunas'),[ 'class' => 'form-control', 'required'=> 'required', 'data-parsley-pattern'=>'^[a-zA-Z\s]*$' , 
         'data-parsley-trigger'=>"change" ] ) !!}
     </div>
     {!! Form::label('alergias','Alergias', ['class'=>'control-label col-md-1 col-sm-1 col-xs-12']) !!}
     <div class="col-md-3 col-sm-3 col-xs-12">
         {!! Form::textarea('alergias', old('alergias'),[ 'class' => 'form-control',
-        'data-parsley-type'=>'^[a-zA-Z\s]*$' , 'data-parsley-trigger'=>"change" ] ) !!}
+        'data-parsley-pattern'=>'^[a-zA-Z\s]*$' , 'data-parsley-trigger'=>"change" ] ) !!}
     </div>
 </div>
 
@@ -77,13 +76,13 @@
     {!! Form::label('enfermedades_anteriores','Enfermedades Anteriores', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
     <div class="col-md-3 col-sm-3 col-xs-12">
         {!! Form::textarea('enfermedades_anteriores', old('enfermedades_anteriores'),[ 'class' => 'form-control', 'required'
-        => 'required', 'data-parsley-type'=>'^[a-zA-Z\s]*$' , 
+        => 'required', 'data-parsley-pattern'=>'^[a-zA-Z\s]*$' , 
         'data-parsley-trigger'=>"change" ] ) !!}
     </div>
     {!! Form::label('cirugias','Cirugias', ['class'=>'control-label col-md-1 col-sm-1 col-xs-12']) !!}
     <div class="col-md-3 col-sm-3 col-xs-12">
         {!! Form::textarea('cirugias', old('cirugias'),[ 'class' => 'form-control',
-        'data-parsley-type'=>'^[a-zA-Z\s]*$' , 'data-parsley-trigger'=>"change" ] ) !!}
+        'data-parsley-pattern'=>'^[a-zA-Z\s]*$' , 'data-parsley-trigger'=>"change" ] ) !!}
     </div>
 </div>
 

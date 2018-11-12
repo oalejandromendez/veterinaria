@@ -36,8 +36,9 @@ class RolesTableSeeder extends Seeder
              'CREAR_EPICRISIS',
              'MODIFICAR_EPICRISIS',
              'ELIMINAR_EPICRISIS',
-
-
+             'ACCEDER_ESTADOS',
+             'VER_ESTADOS',
+             'MODIFICAR_ESTADOS',
          ]);
         Role::create(['name' => 'VETERINARIO']);
         Role::create(['name' => 'RECEPCIONISTA']);

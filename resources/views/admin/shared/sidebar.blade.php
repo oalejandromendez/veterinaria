@@ -15,21 +15,42 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a href="{{ route('admin.home')}}"><i class="fas fa-home"></i> Home
+                    <li><a href="{{ route('admin.home')}}"><i class="fas fa-home"></i>  Home
                         </a>
                     </li>
-                    <li><a href="{{ route('admin.usuarios.index')}}"><i class="fas fa-user-tie"></i> Usuarios
+                    <li><a href="{{ route('admin.usuarios.index')}}"><i class="fas fa-user-md"></i>  Usuarios
                         </a>
                     </li>
-                    <li><a href="{{ route('admin.responsables.index')}}"><i class="fas fa-address-card"></i> Responsables
+                    <li><a href="{{ route('admin.responsables.index')}}"><i class="fas fa-address-card"></i>  Responsables
                         </a>
                     </li>
-                    <li><a href="{{ route('admin.animales.index')}}"><i class="fas fa-crow"></i> Animales
+                    <li><a href="{{ route('admin.animales.index')}}"><i class="fas fa-crow"></i>  Animales
                         </a>
                     </li>
-                    <li><a href="{{ route('admin.epicrisis.index')}}"><i class="far fa-clipboard"></i> Epicrisis
+                    <li><a href="{{ route('admin.epicrisis.index')}}"><i class="fas fa-notes-medical"></i>  Epicrisis
                         </a>
                     </li>
+                    <li><a href="{{ route('admin.estados.index')}}"><i class="fas fa-briefcase-medical"></i>  Gestionar Estado
+                        </a>
+                    </li>
+
+                    <li>
+                        <a>
+                            <i class="fas fa-clipboard"></i> Reportes de Mejoramiento <span class="fas fa-angle-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li class="sub_menu"><a href="{{ route('admin.graficas.index') }}">
+                                <i class="fas fa-hospital"></i> Hospitalizacion</a>
+                            </li>
+                            <li class="sub_menu"><a href="{{ route('admin.informes.index') }}">
+                                <i class="fab fa-studiovinari"></i> Decesos</a>
+                            </li>
+                            <li class="sub_menu"><a href="{{ route('admin.informes_altas.index') }}">
+                                <i class="fas fa-heartbeat"></i> Altas</a>
+                            </li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
 

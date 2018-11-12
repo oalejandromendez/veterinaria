@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="actions">
                     <a href="{{ route('admin.epicrisis.create') }}" class="btn btn-info">
-                        <i class="fa fa-plus"></i> Abrir Epicrisis</a></div>
+                        <i class="fa fa-plus"></i> Agregar Epicrisis</a></div>
             </div>
             <br>
             <br>
@@ -19,7 +19,7 @@
         @endcan
         @can('VER_EPICRISIS')
             <div class="col-md-12">
-                @component('admin.components.datatable', ['id' => 'epicrisis-table-ajax']) @slot('columns', [ 'id','Animal','Responsable','Medico Tratante','Diagnostico','Estado',
+                @component('admin.components.datatable', ['id' => 'epicrisis-table-ajax']) @slot('columns', [ 'id','Animal','Responsable', 'Medico Tratante','Diagnostico','Estado',
     'Acciones' => ['style' => 'width:85px;'] ]) @endcomponent
 
             </div>
@@ -121,7 +121,7 @@
                     }
                 },
                 initComplete: function () {
-                    this.api().columns([2,3,5]).every(function () {
+                    this.api().columns([2, 3, 5]).every(function () {
                         var column = this;
                         var select = $('<select style="width: 100px;"><option value=""></option></select>')
                             .appendTo($(column.footer()).empty())

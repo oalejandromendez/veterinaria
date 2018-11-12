@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PerfilUsuarioRequest;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Gate;
 use App\User;
 
@@ -147,7 +148,7 @@ class UserController extends Controller
         $user->fill($request->except('password'));
 
         if ($request->get('password')) {
-            $user->password = $request->get('password');
+            $user->password = Hash::make($request->get('password'));
         }
 
         $user->update();
@@ -180,28 +181,24 @@ class UserController extends Controller
     }
     public function perfil()
     {
-        $estados = Estado::pluck('ESD_Nombre', 'PK_ESD_Id');
         $roles = Role::pluck('name', 'name');
         $user = User::findOrFail(Auth::id());
         $edit = true;
         return view(
-            'lestoma.SuperAdministrador.Users.perfil',
-            compact('user', 'estados', 'roles', 'edit')
+            'Veterinaria.Usuarios.perfil',
+            compact('user', 'roles', 'edit')
         );
     }
 
-    public function modificarPerfil(PerfilUsuarioRequest $request)
+    public function modificarPerfil(Request $request)
     {
         $user = User::find(Auth::id());
         $user->fill($request->except('password'));
 
         if ($request->get('password')) {
-            $user->password = $request->get('password');
+            $user->password = Hash::make($request->get('password'));
         }
 
-        if ($request->get('PK_ESD_Id')) {
-            $user->id_estado = $request->get('PK_ESD_Id') ? $request->get('PK_ESD_Id') : null;
-        }
         $user->update();
 
         if ($request->input('roles')) {
