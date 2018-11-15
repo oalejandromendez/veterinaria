@@ -7,6 +7,7 @@ use App\Animal;
 use App\Responsable;
 use DataTables;
 use Carbon\Carbon;
+use App\Http\Requests\AnimalRequest;
 
 class AnimalController extends Controller
 {
@@ -68,7 +69,7 @@ class AnimalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnimalRequest $request)
     {
         $animal = new Animal();
         $animal->fill($request->only(['nombre', 'raza','color']));
@@ -117,7 +118,7 @@ class AnimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AnimalRequest $request, $id)
     {
         $animal = Animal::findOrFail($id);
         $animal->fill($request->only(['nombre', 'raza','color']));

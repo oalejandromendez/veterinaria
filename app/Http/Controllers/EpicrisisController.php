@@ -11,6 +11,7 @@ use App\Estado_Epicrisis;
 use App\Animal;
 use DataTables;
 use Carbon\Carbon;
+use App\Http\Requests\EpicrisisRequest;
 
 class EpicrisisController extends Controller
 {
@@ -72,7 +73,7 @@ class EpicrisisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EpicrisisRequest $request)
     {
         $epicrisis = new Epicrisis();
         $epicrisis->fecha_de_admision = Carbon::createFromFormat('d/m/Y', $request->get('fecha_de_admision'));
@@ -134,7 +135,7 @@ class EpicrisisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EpicrisisRequest $request, $id)
     {
         $epicrisis = Epicrisis::findOrFail($id);
         if($epicrisis->fk_id_estado != $request->get('pk_id_estado'))

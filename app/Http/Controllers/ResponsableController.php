@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Responsable;
 use DataTables;
+use App\Http\Requests\ResponsableRequest;
 
 class ResponsableController extends Controller
 {
@@ -59,7 +60,7 @@ class ResponsableController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ResponsableRequest $request)
     {
         $responsable = new Responsable();
         $responsable->fill($request->all());
@@ -104,7 +105,7 @@ class ResponsableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ResponsableRequest $request, $id)
     {
         $responsable = Responsable::find($id);
         $responsable->fill($request->all());

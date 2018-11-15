@@ -44,5 +44,10 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['name' => 'VER_ESTADOS']);
         Permission::create(['name' => 'MODIFICAR_ESTADOS']);
 
+        Permission::create(['name' => 'ACCEDER_REPORTES_MEJORAMIENTO']);
+        Permission::create(['name' => 'CONSULTAR_REPORTES_HOSPITALIZACION']);
+        Permission::create(['name' => 'CONSULTAR_REPORTES_ALTA']);
+        Permission::create(['name' => 'CONSULTAR_REPORTES_DECESO']);
+
     }
 }

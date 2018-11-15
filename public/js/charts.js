@@ -116,3 +116,20 @@ function peticionGraficasAltas(ruta) {
         }
     });
 }
+
+function peticionGraficasHospitalizacion(ruta) {
+    $.ajax({
+        url: ruta,
+        type: 'GET',
+        dataType: 'json',
+        success: function (r) {
+           $('#graficas').removeClass('hidden');
+           ChartFiltro = crearGrafica('hospitalizacion', 'bar', 'Numero de Hospitalizacion Generales', r.labels_hospitalizacion,
+               ['Cantidad'], r.data_hospitalizacion
+           );
+        },
+        error: function () {
+            alert('Ocurrio un error en el servidor ...');
+        }
+    });
+}

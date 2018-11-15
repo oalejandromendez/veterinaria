@@ -46,7 +46,7 @@ class UsersTableSeeder extends Seeder
             'phone' => '88888888',
             'password' => bcrypt('123456')
         ]);
-        $user3->assignRole('VETERINARIO');
+        $user3->assignRole('RECEPCIONISTA');
 
     }
 }

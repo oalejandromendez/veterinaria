@@ -84,7 +84,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user = new User();
         $user->name = $request->get('name');
@@ -142,7 +142,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = User::find($id);
         $user->fill($request->except('password'));
@@ -190,7 +190,7 @@ class UserController extends Controller
         );
     }
 
-    public function modificarPerfil(Request $request)
+    public function modificarPerfil(PerfilUsuarioRequest $request)
     {
         $user = User::find(Auth::id());
         $user->fill($request->except('password'));

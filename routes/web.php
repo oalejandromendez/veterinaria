@@ -57,12 +57,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('estados', 'EstadosController', ['as' => 'admin']);
     Route::get('estados/data/data', array('as' => 'admin.estados.data', 'uses' => 'EstadosController@data'));
 
-    //Graficas
-    Route::get('admin/hospitalizacion', array(
-        'as' => 'admin.graficas.index',
-        'uses' => 'GraficasController@index'
-    ));
-
     //informes de Encuestas
     Route::get('informes', array(
         'as' => 'admin.informes.index',
@@ -80,8 +74,6 @@ Route::middleware(['auth'])->group(function () {
         'uses' => 'ReportesController@filtro'
     ));
 
-
-
     //informes de Encuestas
     Route::get('informes_altas', array(
         'as' => 'admin.informes_altas.index',
@@ -97,6 +89,23 @@ Route::middleware(['auth'])->group(function () {
     Route::post('informes_altas/filtrar', array(
         'as' => 'admin.informes_altas.filtrar',
         'uses' => 'ReportesAltasController@filtro'
+    ));
+
+    //informes de Encuestas
+    Route::get('informes_hospitalizacion', array(
+        'as' => 'admin.informes_hospitalizacion.index',
+        'uses' => 'ReportesHospitalizacionController@index'
+    ));
+    
+    Route::get('informes_hospitalizacion/datos', array(
+        'as' => 'admin.informes_hospitalizacion.datos',
+        'uses' => 'ReportesHospitalizacionController@obtenerDatos'
+    ));
+    
+    //filtros informes encuestas
+    Route::post('informes_hospitalizacion/filtrar', array(
+        'as' => 'admin.informes_hospitalizacion.filtrar',
+        'uses' => 'ReportesHospitalizacionController@filtro'
     ));
 
     //Reportes pdf documentos de autoevaluacion

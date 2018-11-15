@@ -55,6 +55,9 @@
             $('#estado').select2({
                 language: "es"
             });
+            $('#medico').select2({
+                language: "es"
+            });
             limite = 3;
 
             peticionGraficas("{{ route('admin.informes.datos') }}");
@@ -69,7 +72,22 @@
                     dataType: 'json',
                     success: function (r) {
                         ChartFiltro.destroy();
-                        ChartFiltro = crearGrafica('decesos', 'bar', 'Numero de Decesos Año '+r.etiqueta, r.labels_decesos,
+                        ChartFiltro = crearGrafica('decesos', 'bar', 'Numero de Decesos '+r.etiqueta, r.labels_decesos,
+                        ['Cantidad'], r.data_decesos);
+                    }
+                });
+
+            });
+            $("#medico").change(function () {
+                console.log('asssa');
+                $.ajax({
+                    url: form.attr('action'),
+                    type: form.attr('method'),
+                    data: form.serialize(),
+                    dataType: 'json',
+                    success: function (r) {
+                        ChartFiltro.destroy();
+                        ChartFiltro = crearGrafica('decesos', 'bar', 'Numero de Decesos '+r.etiqueta, r.labels_decesos,
                         ['Cantidad'], r.data_decesos);
                     }
                 });

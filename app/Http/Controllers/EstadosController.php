@@ -11,6 +11,7 @@ use App\Estado_Epicrisis;
 use App\Animal;
 use DataTables;
 use Carbon\Carbon;
+use App\Http\Requests\EstadosRequest;
 
 class EstadosController extends Controller
 {
@@ -103,7 +104,7 @@ class EstadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EstadosRequest $request, $id)
     {
         $epicrisis = Epicrisis::findOrFail($id);
         if($epicrisis->fk_id_estado != $request->get('pk_id_estado'))

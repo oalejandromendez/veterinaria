@@ -31,4 +31,8 @@ class Estado_Epicrisis extends Model
     {
         return $this->belongsTo(Estado::class, 'fk_id_estado', 'pk_id_estado');
     }
+    public function epicrisis()
+    {
+        return $this->belongsTo(Epicrisis::class, 'fk_id_epicrisis', 'pk_id_epicrisis');
+    }
 }

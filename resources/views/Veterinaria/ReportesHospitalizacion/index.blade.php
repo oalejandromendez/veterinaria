@@ -1,28 +1,28 @@
 {{-- Titulo de la pagina --}}
-@section('title', 'Altas')
+@section('title', 'Hospitalizacion')
 
 {{-- Contenido principal --}}
 @extends('admin.layouts.app')
 @section('content')
     @component('admin.components.panel')
-        @slot('title', 'Altas')
+        @slot('title', 'Hospitalizaciones')
 
             <div id="graficas" class="hidden">
                 <div class="row">
                     {!! Form::open([
-                            'route' => 'admin.informes_altas.filtrar',
+                            'route' => 'admin.informes_hospitalizacion.filtrar',
                             'method' => 'POST',
                             'id' => 'form_filtros',
                             'class' => 'form-horizontal form-label-left',
                             'novalidate'
                     ])!!}
                     <div class="col-xs-12">
-                        @include('Veterinaria.ReportesAltas._form')
+                        @include('Veterinaria.ReportesHospitalizacion._form')
 
                         <div class="col-xs-12">
                             <hr/>
                         </div>
-                        <canvas id="altas" height="150"></canvas>
+                        <canvas id="hospitalizacion" height="150"></canvas>
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -55,12 +55,9 @@
             $('#estado').select2({
                 language: "es"
             });
-            $('#medico').select2({
-                language: "es"
-            });
             limite = 3;
 
-            peticionGraficasAltas("{{ route('admin.informes_altas.datos') }}");
+            peticionGraficasHospitalizacion("{{ route('admin.informes_hospitalizacion.datos') }}");
 
             var form = $('#form_filtros');
             $("#estado").change(function () {
@@ -72,23 +69,8 @@
                     dataType: 'json',
                     success: function (r) {
                         ChartFiltro.destroy();
-                        ChartFiltro = crearGrafica('altas', 'bar', 'Numero de Altas '+r.etiqueta, r.labels_altas,
-                        ['Cantidad'], r.data_altas);
-                    }
-                });
-
-            });
-            $("#medico").change(function () {
-                console.log('asssa');
-                $.ajax({
-                    url: form.attr('action'),
-                    type: form.attr('method'),
-                    data: form.serialize(),
-                    dataType: 'json',
-                    success: function (r) {
-                        ChartFiltro.destroy();
-                        ChartFiltro = crearGrafica('altas', 'bar', 'Numero de Altas '+r.etiqueta, r.labels_altas,
-                        ['Cantidad'], r.data_altas);
+                        ChartFiltro = crearGrafica('hospitalizacion', 'bar', 'Numero de Hospitalizacion Año '+r.etiqueta, r.labels_hospitalizacion,
+                        ['Cantidad'], r.data_hospitalizacion);
                     }
                 });
 
