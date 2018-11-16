@@ -2,7 +2,7 @@
     {!! Form::label('nombre','Nombre', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
     <div class="col-md-6 col-sm-6 col-xs-12">
         {!! Form::text('nombre', old('nombre'),[ 'class' => 'form-control col-md-6 col-sm-6 col-xs-12', 'required' => 'required', 'data-parsley-pattern'
-        => '^[a-zA-Z\s]*$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length' => "[1,
+        => '^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length' => "[1,
         50]", 'data-parsley-trigger'=>"change"] ) !!}
     </div>
 </div>
@@ -10,7 +10,7 @@
     {!! Form::label('raza','Raza', [ 'class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
     <div class="col-md-6 col-sm-6 col-xs-12">
         {!! Form::text('raza', old('raza'),[ 'class' => 'form-control col-md-6 col-sm-6 col-xs-12', 'required' => 'required',
-        'data-parsley-pattern' => '^[a-zA-Z\s]*$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length'
+        'data-parsley-pattern' => '^[a-zA-Z0-9-_\.,;:ñÑáéíóúÁÉÍÓÚ ]+$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length'
         => "[1, 50]", 'data-parsley-trigger'=>"change" ]) !!}
     </div>
 </div>
@@ -18,7 +18,7 @@
     {!! Form::label('color','Color', [ 'class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
     <div class="col-md-6 col-sm-6 col-xs-12">
         {!! Form::text('color', old('color'),[ 'class' => 'form-control col-md-6 col-sm-6 col-xs-12', 'required' => 'required',
-        'data-parsley-pattern' => '^[a-zA-Z\s]*$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length'
+        'data-parsley-pattern' => '^[a-zA-Z0-9-_\.,;:ñÑáéíóúÁÉÍÓÚ ]+$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length'
         => "[1, 50]", 'data-parsley-trigger'=>"change" ]) !!}
     </div>
 </div>

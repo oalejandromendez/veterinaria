@@ -54,7 +54,7 @@
     {!! Form::label('motivo_consulta','Motivo de Consulta', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
     <div class="col-md-7 col-sm-6 col-xs-12">
         {!! Form::textarea('motivo_consulta', old('motivo_consulta'),[ 'class' => 'form-control col-md-6 col-sm-6 col-xs-12', 'required' => 'required', 'data-parsley-pattern'
-        => '^[a-zA-Z\s]*$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length' => "[1,
+        => '^[a-zA-Z0-9-_\.,;:ñÑáéíóúÁÉÍÓÚ ]+$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length' => "[1,
         50]", 'data-parsley-trigger'=>"change"] ) !!}
     </div>
 </div>
@@ -68,7 +68,7 @@
     {!! Form::label('alergias','Alergias', ['class'=>'control-label col-md-1 col-sm-1 col-xs-12']) !!}
     <div class="col-md-3 col-sm-3 col-xs-12">
         {!! Form::textarea('alergias', old('alergias'),[ 'class' => 'form-control',
-        'data-parsley-pattern'=>'^[a-zA-Z\s]*$' , 'data-parsley-trigger'=>"change" ] ) !!}
+        'data-parsley-pattern'=>'^[a-zA-Z0-9-_\.,;:ñÑáéíóúÁÉÍÓÚ ]+$' , 'data-parsley-trigger'=>"change" ] ) !!}
     </div>
 </div>
 
@@ -76,13 +76,13 @@
     {!! Form::label('enfermedades_anteriores','Enfermedades Anteriores', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
     <div class="col-md-3 col-sm-3 col-xs-12">
         {!! Form::textarea('enfermedades_anteriores', old('enfermedades_anteriores'),[ 'class' => 'form-control', 'required'
-        => 'required', 'data-parsley-pattern'=>'^[a-zA-Z\s]*$' , 
+        => 'required', 'data-parsley-pattern'=>'^[a-zA-Z0-9-_\.,;:ñÑáéíóúÁÉÍÓÚ ]+$' , 
         'data-parsley-trigger'=>"change" ] ) !!}
     </div>
     {!! Form::label('cirugias','Cirugias', ['class'=>'control-label col-md-1 col-sm-1 col-xs-12']) !!}
     <div class="col-md-3 col-sm-3 col-xs-12">
         {!! Form::textarea('cirugias', old('cirugias'),[ 'class' => 'form-control',
-        'data-parsley-pattern'=>'^[a-zA-Z\s]*$' , 'data-parsley-trigger'=>"change" ] ) !!}
+        'data-parsley-pattern'=>'^[a-zA-Z0-9-_\.,;:ñÑáéíóúÁÉÍÓÚ ]+$' , 'data-parsley-trigger'=>"change" ] ) !!}
     </div>
 </div>
 
@@ -109,7 +109,7 @@
     {!! Form::label('examenes_clinicos','Examenes Clinicos', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
     <div class="col-md-7 col-sm-6 col-xs-12">
         {!! Form::textarea('examenes_clinicos', old('examenes_clinicos'),[ 'class' => 'form-control col-md-6 col-sm-6 col-xs-12', 'required' => 'required', 'data-parsley-pattern'
-        => '^[a-zA-Z\s]*$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length' => "[1,
+        => '^[a-zA-Z0-9-_\.,;:ñÑáéíóúÁÉÍÓÚ ]+$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length' => "[1,
         50]", 'data-parsley-trigger'=>"change"] ) !!}
     </div>
 </div>
@@ -118,7 +118,7 @@
     {!! Form::label('diagnostico','Diagnostico', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
     <div class="col-md-7 col-sm-6 col-xs-12">
         {!! Form::textarea('diagnostico', old('diagnostico'),[ 'class' => 'form-control col-md-6 col-sm-6 col-xs-12', 'required' => 'required', 'data-parsley-pattern'
-        => '^[a-zA-Z\s]*$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length' => "[1,
+        => '^[a-zA-Z0-9-_\.,;:ñÑáéíóúÁÉÍÓÚ ]+$', 'data-parsley-pattern-message' => 'Por favor escriba solo letras', 'data-parsley-length' => "[1,
         50]", 'data-parsley-trigger'=>"change"] ) !!}
     </div>
 </div>

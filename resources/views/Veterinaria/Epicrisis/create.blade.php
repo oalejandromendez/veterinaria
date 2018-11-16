@@ -90,6 +90,14 @@
                 success: function (response, NULL, jqXHR) {
                     $(form)[0].reset();
                     $(form).parsley().reset();
+                    $("#responsable").select2({allowClear: true});
+                    $("#responsable").select2('data', {}); // clear out values selected 
+                    $("#animal").html('').select2();
+                    $('#animal').prop('disabled', true);
+                    $("#medico").select2('data', {}); // clear out values selected 
+                    $("#medico").select2({allowClear: true});
+                    $("#estado").select2('data', {}); // clear out values selected 
+                    $("#estado").select2({allowClear: true});
                     new PNotify({
                         title: response.title,
                         text: response.msg,

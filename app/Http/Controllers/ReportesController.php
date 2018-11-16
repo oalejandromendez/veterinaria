@@ -58,13 +58,16 @@ class ReportesController extends Controller
         $dataDecesos = [];
         $datos = [];
         $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"); 
-        for($i=1;$i<=12;$i++){
+        for($i=01;$i<=12;$i++){
             if($request->get('id_estado') && $request->get('id_medico')){
                 $medicos = User::selectRaw('CONCAT(name," ",lastname) AS nombre')
                 ->where('id','=',$request->get('id_medico'))->first();
                 $datos['etiqueta'] = "Año ". $request->get('id_estado'). " Medico ". $medicos->nombre ;
                 $estados_epicrisis = Estado_Epicrisis::whereHas('estado', function ($query) {
                     return $query->where('estado', '=', 'DECESO');
+                })
+                ->whereHas('epicrisis', function ($query) use($request) {
+                    return $query->where('fk_id_medico_veterinario', '=', $request->get('id_medico'));
                 })
                 ->whereYear('fecha','=',$request->get('id_estado'))
                 ->whereMonth('fecha','=',$i)
